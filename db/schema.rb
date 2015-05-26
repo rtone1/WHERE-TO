@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 20150525205939) do
     t.string   "hour"
     t.string   "link"
     t.string   "image"
+    t.string   "neighborhood"
     t.string   "location"
     t.string   "movierating"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree

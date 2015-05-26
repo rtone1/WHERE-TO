@@ -9,6 +9,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :hour
       t.string :link
       t.string :image
+      t.string :neighborhood
       t.string :location
       t.string :movierating
       t.references :user, index: true, foreign_key: true
