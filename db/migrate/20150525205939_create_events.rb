@@ -3,6 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string :category
       t.string :title
+      t.string :moviename
       t.text :description
       t.string :startdate
       t.string :hour
