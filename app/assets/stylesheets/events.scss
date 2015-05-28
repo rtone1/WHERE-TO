@@ -1,3 +1,51 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#eventpage{
+  background-color: lightgray;
+  margin: 0px;
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0px;
+  padding: 0px;
+}
+header{
+  width: 100%;
+  height: 70px;
+  background-color: darkblue;
+}
+header h1{
+  margin-left: 20px;
+  font-family:'Oswald', sans-serif;
+  line-height: 67px;
+  letter-spacing: 1px;
+  color: white;
+}
+#container{
+  width: 95%;
+  margin: 0px auto;
+}
+.info-content{
+  width: 90%;
+  margin: 15px auto 0px;
+}
+.content{
+  width: 60%;
+  height: 600px;
+  margin-right: 40px;
+  float: left;
+  background-color: white;
+}
+.imagePort{
+  width:100%;
+  height: 400px;
+  margin: 0px auto;
+  background: gray;
+}
+aside{
+  width: 30%;
+  height: 400px;
+  float: left;
+  background-color: white;
+}
+
+}

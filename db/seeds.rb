@@ -12,9 +12,12 @@ require 'csv'
 # CSV.foreach(filename, :headers=>true) do |csv_obj|
 #
 #   Event.create!({
+#      category: csv_obj['Category'],
 #      title: csv_obj[' EventName '],
 #      moviename: csv_obj[' MovieName'],
-#      hour: csv_obj[' StartDate'],
+#      neighborhood: csv_obj['ParkName'],
+#      startdate: csv_obj[' StartDate'],
+#      hour: csv_obj['Hour'],
 #      link: csv_obj[' EventUrl'],
 #      movierating: csv_obj[' MovieRating'],
 #      location: csv_obj['Location 1']
