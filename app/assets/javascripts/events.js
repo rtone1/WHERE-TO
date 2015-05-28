@@ -2,6 +2,7 @@
 // All this logic will automatically be available in application.js.
 
 
+
 $(document).ready(function(){
   console.log('You are raedy to code');
 });

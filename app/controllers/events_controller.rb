@@ -8,4 +8,9 @@ class EventsController < ApplicationController
     @Event = Event.find(params[:id])
   end
 
+  def eventsapi
+    events = Event.all
+    render json: events
+  end
+
 end
