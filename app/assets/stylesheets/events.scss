@@ -4,6 +4,7 @@
 #eventpage{
   background-color: lightgray;
   margin: 0px;
+  overflow: hidden;
 h1,h2,h3,h4,h5,h6,p {
   margin: 0px;
   padding: 0px;
@@ -23,6 +24,7 @@ header h1{
 #container{
   width: 95%;
   margin: 0px auto;
+  overflow: scroll;
 }
 .info-content{
   width: 90%;

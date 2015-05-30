@@ -6,57 +6,105 @@ var app = {};
 app.EventModel = Backbone.Model.extend();
 
 //Backbone template Events
-app.EventTemplate = $('#event-template').html();
+// app.EventTemplate = $('#event-template').html();
 
 //Backbone view for Events
 app.EventView = Backbone.View.extend({
 
   tagName: 'div',
   className: 'eventInfo',
-  //template: _.template(app.EventTemplate),
-  template: _.template('<h1><%= title %> <img src="<%= image %>" /> </h1>'),
+  template: _.template('<div class="imagePort"><img src="<%= image %>" /></div><section id="infosection"><h2> <%= title %> </h2></section>'),
   intialize: function(){
       this.listenTo(this.model, "change", this.render);
   },
-  render: function(){
-    var data = this.model.attributes;
-    console.log(data);
+  render: function(data){
     var html = this.template(data);
     this.$el.html(html);
     $(".content").append(this.$el);
+
   }
+
 });//end of EventView
 
-//Backbone collection for Events
-app.EvnetList = Backbone.Collection.extend({
-  url: '/api/events',
-  model: app.EventModel
-});
-
-app.EventListView = Backbone.View.extend({
-  initialize: function(){
-    this.listenTo(this.collection, "sync", this.render);
-  },
-  render: function(){
-    //this.$el.empty();
-    var modelCount = this.collection.models.length;
-    for (var i = 0; i < modelCount; i++) {
-      var model = this.collection.models[i];
-      var view = new app.EventView({ model: model});
-      view.render();
-    }
-  }
-});//end of EventListView
+// Date varible in month/day/year format
+var now = moment().format("MMM Do YYYY");
+// Date varible in number format
+var now2 = moment().format("L");
 
 
 $(document).ready(function(){
-  console.log('You are raedy to code');
 
-app.eventList = new app.EvnetList();
-app.eventListView = new app.EventListView({
-  collection: app.eventList
+  function getEvents(){
+
+        $.ajax({
+          method: 'get',
+          url: '/api/events',
+          dataType: 'json',
+          success: function(data){
+            for (var model in data){
+              var eve = data[model];
+              var view = new app.EventView();
+              view.render(eve);
+            }
+          }
+        });
+
+  };
+getEvents();
+
+function getMovies(){
+
+      $.ajax({
+        method: 'get',
+        url: '/api/events',
+        dataType: 'json',
+        success: function(data){
+          for (var model in data){
+            var moviesP = data[model];
+            if  (moviesP.category == "Movies at the park"){
+              var view = new app.EventView();
+              view.render(moviesP);
+            }
+          }
+        }
+      });
+
+};
+
+function getFestivals(){
+
+      $.ajax({
+        method: 'get',
+        url: '/api/events',
+        dataType: 'json',
+        success: function(data){
+          for (var model in data){
+            var fest = data[model];
+            if  (fest.category == "Street Festival"){
+              var viewfest = new app.EventView();
+              viewfest.render(fest);
+            }
+          }
+        }
+      });
+
+};
+
+var display = $('.content');
+
+$('#allEvents').on('click', function(){
+    display.empty();
+    getEvents();
 });
-app.eventList.fetch();
 
+$('#festivals').on('click', function(){
+    display.empty();
+    getFestivals();
+});
+
+$('#movies').on('click', function(){
+    display.empty();
+    getMovies();
+});
 
 });//end of document ready

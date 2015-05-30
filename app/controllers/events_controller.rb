@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
   def eventsapimix
     events = Event.all
-    random = events.shuffle()
+    random = events.sample()
     render json: random
   end
 
