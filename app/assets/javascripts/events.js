@@ -10,10 +10,11 @@ app.EventTemplate = $('#event-template').html();
 
 //Backbone view for Events
 app.EventView = Backbone.View.extend({
+
   tagName: 'div',
   className: 'eventInfo',
   //template: _.template(app.EventTemplate),
-  template: _.template('<h1><%= title %></h1>'),
+  template: _.template('<h1><%= title %> <img src="<%= image %>" /> </h1>'),
   intialize: function(){
       this.listenTo(this.model, "change", this.render);
   },
@@ -41,7 +42,7 @@ app.EventListView = Backbone.View.extend({
     var modelCount = this.collection.models.length;
     for (var i = 0; i < modelCount; i++) {
       var model = this.collection.models[i];
-      var view = new app.FoodView({ model: model});
+      var view = new app.EventView({ model: model});
       view.render();
     }
   }
@@ -51,6 +52,11 @@ app.EventListView = Backbone.View.extend({
 $(document).ready(function(){
   console.log('You are raedy to code');
 
-
-
+app.eventList = new app.EvnetList();
+app.eventListView = new app.EventListView({
+  collection: app.eventList
 });
+app.eventList.fetch();
+
+
+});//end of document ready
