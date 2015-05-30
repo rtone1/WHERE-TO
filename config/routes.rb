@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :users
 
   get '/api/events' => 'events#eventsapi'
-
+  get '/api/events/:id' => 'events#eventapi'
+  get '/api/events-rand/' => 'events#eventsapimix'
+  get '/api/events-movies/' => 'events#eventsapimovie'
+  get '/api/events-festivals/' => 'events#eventsapifest'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
