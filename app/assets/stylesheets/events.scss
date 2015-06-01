@@ -4,7 +4,7 @@
 #eventpage{
   background-color: lightgray;
   margin: 0px;
-  overflow: hidden;
+  //overflow: hidden;
 h1,h2,h3,h4,h5,h6,p {
   margin: 0px;
   padding: 0px;
@@ -21,10 +21,16 @@ header h1{
   letter-spacing: 1px;
   color: white;
 }
+header img{
+  width: 200px;
+  height: 72px;
+}
+header input{
+  float: right;
+}
 #container{
   width: 95%;
   margin: 0px auto;
-  overflow: scroll;
 }
 .info-content{
   width: 90%;
@@ -32,22 +38,81 @@ header h1{
 }
 .content{
   width: 60%;
-  height: 600px;
   margin-right: 40px;
   float: left;
+}
+.eventInfo{
   background-color: white;
+  margin-bottom: 10px;
 }
 .imagePort{
-  width:100%;
-  height: 400px;
+  max-width:100%;
+  height: 350px;
   margin: 0px auto;
-  background: gray;
+  position: relative;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #070315;
+  color: white;
+
 }
+.image-haeder{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: white;
+  background: linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
+.rating{
+  margin-top: 5px;
+}
+h3{
+  float: left;
+}
+b{
+  float: right;
+}
+}
+#infosection{
+  padding: 10px;
+.dates, .location{
+  width: 200px;
+  float: left;
+  margin-bottom: 10px;
+}
+.location{
+  float: right;
+}
+.descrip{
+  clear: both;
+  height: 100px;
+  overflow: scroll;
+}
+}
+
 aside{
   width: 30%;
   height: 400px;
   float: left;
   background-color: white;
+}
+
+@media (max-width: 500px){
+
+    .imagePort {
+      max-width: 100%;
+      height: 400px;
+      margin: 0px auto;
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+
 }
 
 }
