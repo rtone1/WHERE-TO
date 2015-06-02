@@ -25,8 +25,15 @@ header img{
   width: 200px;
   height: 72px;
 }
-header input{
-  float: right;
+.loading{
+  width: 80px;
+  height: 80px;
+  margin: 0px auto;
+  background-image: url('loader.gif');
+  background-size: cover;
+  position: relative;
+  top: 40%;
+  z-index: -1;
 }
 #container{
   width: 95%;
@@ -38,12 +45,15 @@ header input{
 }
 .content{
   width: 60%;
-  margin-right: 40px;
+  height: 560px;
+  margin-right: 20px;
   float: left;
+  //overflow: hidden;
+  background-color: white;
 }
 .eventInfo{
+  padding-bottom: 10px;
   background-color: white;
-  margin-bottom: 10px;
 }
 .imagePort{
   max-width:100%;
@@ -79,6 +89,7 @@ b{
 }
 #infosection{
   padding: 10px;
+  overflow: scroll;
 .dates, .location{
   width: 200px;
   float: left;
@@ -90,7 +101,6 @@ b{
 .descrip{
   clear: both;
   height: 100px;
-  overflow: scroll;
 }
 }
 
