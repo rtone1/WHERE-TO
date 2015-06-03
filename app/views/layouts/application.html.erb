@@ -2,8 +2,24 @@
 <html>
 <head>
   <title>WHERE-TO</title>
+  <script type='text/template' id='eventtemplate'>
+    <div class="imagePort" style="background-image: url(<%%= image %>)">
+      <div class="image-haeder">
+        <h1> <%%= title %> </h1
+          ><div class="rating">
+            <h3> <%%= moviename %> </h3> <b> <%%= movierating %> </b>
+        </div>
+      </div>
+    </div>
+    <section id="infosection">
+       <p class="dates"> <strong> <%%= startdate %> </strong> <br> <%%= hour %> </p>
+       <div class="location"> <h4> <%%= neighborhood %> </h4>  <%%= location %> </div>
+       <p class="descrip"> <%%= description %> <br> <a href=" <%%= link %> " target="_blank"> get more information about this event </a>
+       </p>
+       </section>
+  </script>
   <!-- <link href="http://fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic" rel="stylesheet" type="text/css" /> -->
-  <script type="text/javascript" src="/path/to/jquery.jcarousel.js"></script>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>

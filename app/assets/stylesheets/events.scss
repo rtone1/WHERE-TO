@@ -20,20 +20,38 @@ header h1{
   line-height: 67px;
   letter-spacing: 1px;
   color: white;
+  display: inline-block;
 }
 header img{
   width: 200px;
   height: 72px;
 }
-.loading{
-  width: 80px;
-  height: 80px;
-  margin: 0px auto;
-  background-image: url('loader.gif');
-  background-size: cover;
-  position: relative;
-  top: 40%;
-  z-index: -1;
+nav{
+  float: right;
+}
+input{
+  width: 10em;
+  height: 50px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+}
+input:focus,
+input:active{
+  outline: 0;
+  border: 1px solid gray;
+}
+a{
+  text-decoration: none;
+}
+#prev img{
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+img:hover{
+  box-shadow: 0px 0px 9px -1px rgb(234, 228, 229);
+  border-radius: 10px;
 }
 #container{
   width: 95%;

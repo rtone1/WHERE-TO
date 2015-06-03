@@ -1,22 +1,24 @@
 <body id="eventpage">
   <header>
-
     <h1> <%= image_tag('whereTo-logo.png') %> </h1>
+    <nav>
+      <ul>
+        <li id="allEvents">All Events</li>
+        <li id="festivals">Street Fest</li>
+        <li id="movies">Moives at Paks</li>
+      </ul>
+    </nav>
   </header>
 
-  <input id="allEvents" type="button" name="name" value="All Events">
-  <input id="festivals" type="button" name="name" value="Street Fest">
-  <input id="movies" type="button" name="name" value="Movies at park">
-  <a href=# id="prev">Prev</a><a href=# id="next">Next</a>
+
+  <a href=# id="prev"> <%= image_tag('arrow.png') %> </a><a href=# id="next"> <%= image_tag('arrow.png') %> </a>
 
   <div id="container">
     <div class="info-content">
 
       <div class="content">
-        
+
       </div>
-
-
 
       <aside class="moreinfo">
       </aside>
@@ -24,26 +26,5 @@
     </div>
 
   </div>
-
-
-
-
-  <script type='text/template' id='eventtemplate'>
-    <div class="imagePort">
-      <img src="<%%= image %>" />
-    </div>
-    <h2> <%%= title %> </h2>
-      <h4> <%%= moviename %> <span> <%%= movierating %> </span> </h4>
-    <section id="infosection">
-
-          <p><strong> <%%= startdate %> </strong> <%%= hour %> </p>
-      <h4> <%%= neighborhood %> </h4>
-      <strong> <%%= location %> </strong>
-        <p> <%%= description %> </p>
-      <a href=" <%%= link %> "> <%%= link %> </a>
-    </section>
-  </script>
-
-
 
 </body>

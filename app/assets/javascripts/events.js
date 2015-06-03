@@ -2,19 +2,15 @@
 // All this logic will automatically be available in application.js.
 var app =  {};
 
-// //Backbone model for Events
-// app.EventModel = Backbone.Model.extend();
-//
 // //Backbone template Events
-// app.EventTemplate = $('#eventtemplate').html();
+app.EventTemplate = $('#eventtemplate').html();
 
 //Backbone view for Events
 app.EventView = Backbone.View.extend({
 
   tagName: 'div',
   className: 'eventInfo',
-  //template: _.template(app.EventTemplate),
-  template: _.template('<div class="imagePort" style="background-image: url(<%= image %>)"><div class="image-haeder"> <h1> <%= title %> </h1><div class="rating"><h3> <%= moviename %> </h3> <b> <%= movierating %> </b></div> </div> </div> <section id="infosection"> <p class="dates"> <strong> <%= startdate %> </strong> <br> <%= hour %> </p> <div class="center"></div> <div class="location"> <h4> <%= neighborhood %> </h4>  <%= location %> </div> <p class="descrip"> <%= description %> <br> <a href=" <%= link %> " target="_blank"> <%= link %> </a> </p> </section>'),
+  template: _.template(app.EventTemplate),
   intialize: function(){
       this.listenTo(this.model, "change", this.render);
   },
@@ -112,7 +108,11 @@ $('#movies').on('click', function(){
     display.empty();
     app.getMovies();
 });
-
-
+// end of click events ===================
+$(function() {
+    $('.jcarousel').jcarousel({
+        // Configuration goes here
+    });
+});//end of jcarousel
 
 });//end of document ready
