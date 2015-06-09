@@ -16,8 +16,13 @@ gem 'uglifier', '>= 1.3.0'
 
 # momentJS parsing dates library
 gem 'momentjs-rails', '~> 2.10.2'
+# fullcalendar calendar
+gem 'fullcalendar-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'jquery-ui-rails'
+gem 'jquery-rest-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Backbone

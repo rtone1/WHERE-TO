@@ -48,10 +48,8 @@ app.getEvents = function getEvents(){
         success: function(data){
           for (var model in data){
             var eve = data[model];
-            if (eve.startdate == "06/15/2015" ){
             var view = new app.EventView();
             view.render(eve);
-           }
 
           }
         }
@@ -114,38 +112,39 @@ var display = $('.content');
 
 $('#allEvents').on('click', function(){
     display.empty();
-    app.getEvents(app.testLog);
+    slideShow(app.getEvents());
+
 });
 
 $('#festivals').on('click', function(){
     display.empty();
-    app.getFestivals();
+    slideShow(app.getFestivals());
+
 });
 
 $('#movies').on('click', function(){
     display.empty();
-    app.getMovies();
+    slideShow(app.getMovies());
+
 });
 // end of click events ===================
 
-$.when(app.getEvents()).done(function() {
-  var test = $('.content').find('.eventInfo');
-  var conter = -1;
-  var slide;
+function slideShow(callback){
+$.when(callback).done(function() {
 
-    $('#next').on('click',function(){
-       conter = (conter + 1) % test.length;
-       slide = (test[conter]);
-         $( test[conter] ).fadeOut( "slow", function(){})
-    });
+    var test = $('.content').find('.eventInfo');
+    var conter = -1;
+    var slide;
 
-    $('#prev').on('click',function(){
+      $('#next').on('click',function(){
+         conter = (conter + 1) % test.length;
+         slide = (test[conter]);
+           $( test[conter] ).fadeOut( "slow", function(){})
+      });
 
-        $( back ).fadeIn( "slow", function(){});
-    });
+  });
 
-});
-
-
+};
+slideShow(app.getEvents());
 
 });//end of document ready
