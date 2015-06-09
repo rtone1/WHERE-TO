@@ -2,24 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #eventpage{
-  background-color: lightgray;
+  background-color: white;
   margin: 0px;
-  //overflow: hidden;
+
 h1,h2,h3,h4,h5,h6,p {
   margin: 0px;
   padding: 0px;
 }
+a{
+  text-decoration: none;
+}
+// normalize end
 header{
   width: 100%;
-  height: 70px;
-  background-color: darkblue;
+  height: 90px;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+  background-color: rgb(27, 101, 136);
 }
 header h1{
-  margin-left: 20px;
-  font-family:'Oswald', sans-serif;
-  line-height: 67px;
-  letter-spacing: 1px;
-  color: white;
+  margin: 5px 5px 0px  20px;
   display: inline-block;
 }
 header img{
@@ -27,51 +30,88 @@ header img{
   height: 72px;
 }
 nav{
+  position: relative;
   float: right;
+  right: 50px;
+  margin: 10px;
+  font-family: 'Fjalla One', sans-serif;
+  color: white;
 }
-input{
-  width: 10em;
-  height: 50px;
-  border: none;
-  font-size: 16px;
-  border-radius: 5px;
+ul{
+  padding: 10px;
+  font-size: 22px;
+  line-height: 0;
 }
-input:focus,
-input:active{
-  outline: 0;
-  border: 1px solid gray;
+li{
+  display: inline;
+  margin: 0px 10px 0px;
 }
-a{
-  text-decoration: none;
-}
+// header end
+
 #prev img{
   transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
 }
-img:hover{
+#prev, #next img:hover{
   box-shadow: 0px 0px 9px -1px rgb(234, 228, 229);
   border-radius: 10px;
 }
+// icon arrows end
+
 #container{
-  width: 95%;
+  width: 100%;
   margin: 0px auto;
+  position: relative;
+  top: 90px;
 }
 .info-content{
   width: 90%;
   margin: 15px auto 0px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  background-color: white;
 }
 .content{
-  width: 60%;
-  height: 560px;
-  margin-right: 20px;
-  float: left;
-  //overflow: hidden;
-  background-color: white;
+  width: 100%;
+  height: 700px;
+  display: inline;
+  overflow: hidden;
+
 }
+aside{
+  width: 38%;
+  height: 500px;
+  float: right;
+  background-color: white;
+  border-left: 1px solid gray;
+  text-align: center;
+  h1{
+    font-family: 'Oswald', sans-serif;
+  }
+}
+.calendar{
+  width: 90%;
+  height: 300px;
+  margin: 0px auto;
+  border: 1px solid gray;
+}
+.listEvent{
+  width: 90%;
+  height: 400px;
+  margin: 3px auto;
+  border-top: 1px solid gray;
+}
+// main containers end
+
 .eventInfo{
+  width: 60%;
+  display: inline-block;
   padding-bottom: 10px;
   background-color: white;
+
 }
 .imagePort{
   max-width:100%;
@@ -83,7 +123,6 @@ img:hover{
   background-repeat: no-repeat;
   background-color: #070315;
   color: white;
-
 }
 .image-haeder{
   position: absolute;
@@ -91,12 +130,17 @@ img:hover{
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  background: white;
-  background: linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
-  background: -moz-linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
+  background-color: rgba(0, 0, 0, .5);
+  // background: linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
+  // background: -webkit-linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
+  // background: -moz-linear-gradient(bottom, rgba(0, 0, 0,.9), rgba(0,0,0,.4));
+}
 .rating{
   margin-top: 5px;
+}
+h2, h3, h4{
+  font-family: 'Fjalla One', sans-serif;
+  letter-spacing: .5px;
 }
 h3{
   float: left;
@@ -104,30 +148,45 @@ h3{
 b{
   float: right;
 }
-}
+//imagePort end
+
 #infosection{
   padding: 10px;
-  overflow: scroll;
-.dates, .location{
-  width: 200px;
-  float: left;
-  margin-bottom: 10px;
 }
-.location{
+.date-local,
+.date-local2{
+  width: 30%;
+}
+.date-local{
+  float: left;
+}
+.date-local2{
   float: right;
 }
-.descrip{
+.description{
+  font-family: 'Open Sans', sans-serif;
+  padding: 5px 0px;
   clear: both;
-  height: 100px;
 }
+.description, p{
+  margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+.infolink{
+  display: block;
+  border-top: 1px solid gray;
+  padding: 5px 0px 0px;
+  text-decoration: none;
+  font-family: 'Cantarell', sans-serif;
+  color: rgb(10, 24, 94);
+}
+.infolink:hover{
+  color: #6979CD;
 }
 
-aside{
-  width: 30%;
-  height: 400px;
-  float: left;
-  background-color: white;
-}
+}// end of body main
+
+// responsive design starts below
 
 @media (max-width: 500px){
 
@@ -140,7 +199,20 @@ aside{
       background-repeat: no-repeat;
     }
 
-
 }
 
+@media (max-width: 700px){
+
+    nav{
+      display: none;
+    }
+    .ham-nav{
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      float: right;
+      margin: 25px 20px 0px;
+      background-size: cover;
+      background-image: url('https://cdn3.iconfinder.com/data/icons/gray-toolbar/512/menu-512.png');
+    }
 }

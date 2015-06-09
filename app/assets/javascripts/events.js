@@ -11,6 +11,9 @@ app.EventView = Backbone.View.extend({
   tagName: 'div',
   className: 'eventInfo',
   template: _.template(app.EventTemplate),
+  events: {
+  'click #next': 'transition'
+  },
   intialize: function(){
       this.listenTo(this.model, "change", this.render);
   },
@@ -18,47 +21,58 @@ app.EventView = Backbone.View.extend({
     var html = this.template(data);
     this.$el.html(html);
     $(".content").append(this.$el);
+  },
+  transition: function(){
+    var conter = 0;
+    conter = (conter + 1) % data.length;
+    console.log(data[conter]);
   }
 
 });//end of EventView
+
 
 // Date varible in month/day/year format
 app.now = moment().format("MMMM D YYYY").split(' ');
 // Date varible in number format
 app.now2 = moment().format("L");
-
+app.times = app.now2.slice(0,5);
 
 $(document).ready(function(){
 
 app.getEvents = function getEvents(){
 
-        $.ajax({
-          method: 'get',
-          url: '/api/events',
-          dataType: 'json',
-          success: function(data){
-            for (var model in data){
-              var eve = data[model];
-              var view = new app.EventView();
-              view.render(eve);
-            }
-          }
-        });
+  var deferred = $.ajax({
+        method: 'get',
+        url: '/api/events',
+        dataType: 'json',
+        success: function(data){
+          for (var model in data){
+            var eve = data[model];
+            if (eve.startdate == "06/15/2015" ){
+            var view = new app.EventView();
+            view.render(eve);
+           }
 
-  };
-app.getEvents();
+          }
+        }
+      });
+
+      return deferred;
+
+};
+//app.getEvents();
 
 app.getMovies = function getMovies(){
 
-      $.ajax({
+  var deferred2 = $.ajax({
         method: 'get',
         url: '/api/events',
         dataType: 'json',
         success: function(data){
           for (var model in data){
             var moviesP = data[model];
-            var moviesOnly = moviesP.startdate == app.now2;
-            if  (moviesP.category == "Movies at the park"){
+            var moviesOnly = moviesP.startdate == "08/30/2015";
+            if  (moviesP.category == "Movies at the park" && moviesOnly){
               var view = new app.EventView();
               view.render(moviesP);
             }
@@ -66,11 +80,13 @@ app.getMovies = function getMovies(){
         }
       });
 
+      return deferred2;
+
 };
 
 app.getFestivals = function getFestivals(){
 
-      $.ajax({
+  var deferred3 = $.ajax({
         method: 'get',
         url: '/api/events',
         dataType: 'json',
@@ -88,6 +104,8 @@ app.getFestivals = function getFestivals(){
 
       });
 
+      return deferred3;
+
 };
 
 
@@ -96,7 +114,7 @@ var display = $('.content');
 
 $('#allEvents').on('click', function(){
     display.empty();
-    app.getEvents();
+    app.getEvents(app.testLog);
 });
 
 $('#festivals').on('click', function(){
@@ -109,10 +127,25 @@ $('#movies').on('click', function(){
     app.getMovies();
 });
 // end of click events ===================
-$(function() {
-    $('.jcarousel').jcarousel({
-        // Configuration goes here
+
+$.when(app.getEvents()).done(function() {
+  var test = $('.content').find('.eventInfo');
+  var conter = -1;
+  var slide;
+
+    $('#next').on('click',function(){
+       conter = (conter + 1) % test.length;
+       slide = (test[conter]);
+         $( test[conter] ).fadeOut( "slow", function(){})
     });
-});//end of jcarousel
+
+    $('#prev').on('click',function(){
+
+        $( back ).fadeIn( "slow", function(){});
+    });
+
+});
+
+
 
 });//end of document ready

@@ -5,21 +5,30 @@
   <script type='text/template' id='eventtemplate'>
     <div class="imagePort" style="background-image: url(<%%= image %>)">
       <div class="image-haeder">
-        <h1> <%%= title %> </h1
-          ><div class="rating">
-            <h3> <%%= moviename %> </h3> <b> <%%= movierating %> </b>
-        </div>
+        <h2> <%%= title %> </h2>
+          <div class="rating">
+              <h3> <%%= moviename %> </h3> <b> <%%= movierating %> </b>
+          </div>
       </div>
     </div>
     <section id="infosection">
-       <p class="dates"> <strong> <%%= startdate %> </strong> <br> <%%= hour %> </p>
-       <div class="location"> <h4> <%%= neighborhood %> </h4>  <%%= location %> </div>
-       <p class="descrip"> <%%= description %> <br> <a href=" <%%= link %> " target="_blank"> get more information about this event </a>
-       </p>
-       </section>
+      <div class="date-local">
+        <h4>When:</h4>
+        <p> <strong> <%%= startdate %> </strong> <br> <%%= hour %> </p>
+      </div>
+      <div class="date-local2"> <h4> <%%= neighborhood %> </h4>
+         <p> <%%= location %> </p>
+      </div>
+        <p class="description"> <%%= description %> </p>
+      <div>
+         <a class="infolink" href=" <%%= link %> " target="_blank"> get more information about this event </a>
+      </div>
+    </section>
   </script>
-  <!-- <link href="http://fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic" rel="stylesheet" type="text/css" /> -->
 
+  <link href="http://fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic" rel="stylesheet" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Fjalla+One|Cantarell:400,400italic,700italic,700" rel="stylesheet" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans|Dosis:400,800" rel="stylesheet" type="text/css" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>

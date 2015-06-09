@@ -14,7 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jcarousel
 //= require underscore
 //= require backbone
+//= require cycle
 //= require_tree .
