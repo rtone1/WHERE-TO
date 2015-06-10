@@ -7,6 +7,6 @@ Where-To is an application aimed at helping Chicagoans find free events around t
 
 
 #Upcoming features
-Features for version 2.0 will include a calendar that holds links to certain events and a weather wigit to provide users with live weather updates.
+Features for version 2.0 will include a calendar that holds links to certain events and a weather display to provide users with live weather updates.
 
 
