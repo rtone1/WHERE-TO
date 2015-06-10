@@ -1,12 +1,12 @@
 #Find where to go with WHERE-TO
-Where-To is an application aim at helping Chicagoans find free events around the city. It's main focus is presenting event data in a easy to read design, therefore creating a better user experience. Where-To accomplish by using less and proving more. This is done by  displaying events one at a time on the page(through scrolling the page or a simple slide show). Also, other featers allow users to save their events, so fun experiences are not miss out on. 
+Where-To is an application aimed at helping Chicagoans find free events around their city. Its main focus is to present event data in an easy to read design, thereby creating a better user experience. Where-To accomplishes a minimalistic approach by displaying events one at a time on the page(scrolling down the page or through a simple slide show). In addition to the design are other features which allow for fun experiences to not be missed out on, such as allowing the user to save their chosen events.
 
 #ScreenShot of main page
 ![main page](/mainpage.png)
 
 
 
-#Up coming features
-Features for version 2.0 will include a calendar that will hold links to certain events. Also, a weather API that provides users with live weather updates.
+#Upcoming features
+Features for version 2.0 will include a calendar that holds links to certain events and a weather wigit to provide users with live weather updates.
 
 
