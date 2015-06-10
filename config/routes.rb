@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :events
   resources :users
 
+
+  post '/session_log_in' => 'sessions#log_in_behavior'
+  delete '/session_log_out' => 'sessions#log_out_behavior'
+
   get '/api/events' => 'events#eventsapi'
   get '/api/events/:id' => 'events#eventapi'
   get '/api/events-rand/' => 'events#eventsapimix'

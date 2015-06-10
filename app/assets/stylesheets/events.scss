@@ -184,6 +184,21 @@ b{
 .infolink:hover{
   color: #6979CD;
 }
+button{
+  width: 50px;
+  height: 30px;
+  float: right;
+  margin: -15px 0px 0px 5px;
+  background-color: rgb(27, 101, 136);
+  border: 1px solid rgb(120, 137, 147);
+  border-radius: 5px;
+  font-size: 14px;
+}
+button:focus,
+button:active{
+  outline: 0;
+  border: 1px solid #93B7CC;
+}
 
 }// end of body main
 
