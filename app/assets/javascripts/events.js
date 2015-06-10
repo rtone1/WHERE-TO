@@ -12,7 +12,7 @@ app.EventView = Backbone.View.extend({
   className: 'eventInfo',
   template: _.template(app.EventTemplate),
   events: {
-  'click #next': 'transition'
+  'click #add': 'transition'
   },
   intialize: function(){
       this.listenTo(this.model, "change", this.render);
@@ -23,9 +23,7 @@ app.EventView = Backbone.View.extend({
     $(".content").append(this.$el);
   },
   transition: function(){
-    var conter = 0;
-    conter = (conter + 1) % data.length;
-    console.log(data[conter]);
+    app.updateList();
   }
 
 });//end of EventView
@@ -35,7 +33,7 @@ app.EventView = Backbone.View.extend({
 app.now = moment().format("MMMM D YYYY").split(' ');
 // Date varible in number format
 app.now2 = moment().format("L");
-app.times = app.now2.slice(0,5);
+app.times = app.now2.slice(0,2);
 
 $(document).ready(function(){
 
@@ -58,7 +56,7 @@ app.getEvents = function getEvents(){
       return deferred;
 
 };
-//app.getEvents();
+
 
 app.getMovies = function getMovies(){
 
@@ -69,8 +67,9 @@ app.getMovies = function getMovies(){
         success: function(data){
           for (var model in data){
             var moviesP = data[model];
-            var moviesOnly = moviesP.startdate == "08/30/2015";
-            if  (moviesP.category == "Movies at the park" && moviesOnly){
+            var moviesOnly = moviesP.startdate.slice(0,2);
+            var displayMovie = (moviesOnly == app.times)
+            if  (moviesP.category == "Movies at the park" && displayMovie) {
               var view = new app.EventView();
               view.render(moviesP);
             }
@@ -106,6 +105,35 @@ app.getFestivals = function getFestivals(){
 
 };
 
+app.getRandomEvent = function getRandomEvent(){
+
+        $.ajax({
+        method: 'get',
+        url: '/api/events-rand',
+        dataType: 'json',
+        success: function(data){
+            var viewRand = new app.EventView();
+            viewRand.render(data);
+
+        }
+      });
+
+};
+
+app.updateList = function updateList(){
+
+    $.ajax({
+          method: 'post',
+          url: '/api/update-event',
+          dataType: 'json',
+          data: { event: {user_list: true} },
+          success: function(){
+
+          }
+    });
+
+};
+
 
 // click events for displaying events
 var display = $('.content');
@@ -127,19 +155,38 @@ $('#movies').on('click', function(){
     slideShow(app.getMovies());
 
 });
+
+$('#random').on('click', function(){
+    display.empty();
+    app.getRandomEvent();
+});
+
+$('.log-singup').hide();
+    $('.logIn').on('click', function(){
+    $('.log-singup').slideToggle( "slow", function() {});
+});
+
+$('.responsiveNav').hide();
+    $('.ham-nav').on('click', function(){
+    $('.responsiveNav').slideToggle( "slow", function() {});
+});
 // end of click events ===================
 
 function slideShow(callback){
 $.when(callback).done(function() {
 
     var test = $('.content').find('.eventInfo');
-    var conter = -1;
-    var slide;
+    var count = 0;
 
       $('#next').on('click',function(){
-         conter = (conter + 1) % test.length;
-         slide = (test[conter]);
-           $( test[conter] ).fadeOut( "slow", function(){})
+          $( test[count] ).fadeOut( "slow", function(){})
+          count = (count + 1) % test.length;
+      });
+
+
+      $('#prev').on('click',function(){
+         count = (count - 1);
+          $( test[count] ).fadeIn( "slow", function(){})
       });
 
   });

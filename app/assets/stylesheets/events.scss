@@ -105,6 +105,35 @@ aside{
   margin: 3px auto;
   border-top: 1px solid gray;
 }
+.log-singup{
+  display: inline-block;
+  width: 90%;
+  background-color: #185C7D;
+  border-radius: 3px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px;
+}
+input[type=text],
+input[type=password]{
+  width: 250px;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid rgb(120, 137, 147);
+  border-radius: 4px;
+  font-size: 22px;
+  box-sizing: border-box;
+}
+input[type=submit]{
+  width: 100px;
+  height: 35px;
+  margin: 5px 0px 0px 5px;
+  background-color: #DFE2EA;
+  border: 1px solid rgb(120, 137, 147);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
 // main containers end
 
 .eventInfo{
@@ -193,6 +222,7 @@ button{
   border: 1px solid rgb(120, 137, 147);
   border-radius: 5px;
   font-size: 14px;
+  color: white;
 }
 button:focus,
 button:active{
@@ -217,7 +247,7 @@ button:active{
 
 }
 
-@media (max-width: 700px){
+@media (max-width: 800px){
 
     nav{
       display: none;
@@ -231,4 +261,6 @@ button:active{
       background-size: cover;
       background-image: url('https://cdn3.iconfinder.com/data/icons/gray-toolbar/512/menu-512.png');
     }
+
+
 }

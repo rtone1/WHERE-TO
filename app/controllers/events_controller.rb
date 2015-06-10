@@ -2,10 +2,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-  end
-
-  def show
-    @event = Event.find(params[:id])
+    @use = current_user
   end
 
   def eventsapi
@@ -35,6 +32,18 @@ class EventsController < ApplicationController
     events = events.where(category: "Street Festival")
     render json: events
   end
+
+  def updatedapi
+    event = Event.find(params[:id])
+    event.update(event_params)
+    render json: event
+  end
+
+    private
+
+    def event_params
+      params.require(:event).permit(:user_list)
+    end
 
 
 end

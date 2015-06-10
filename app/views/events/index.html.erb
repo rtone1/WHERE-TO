@@ -1,14 +1,17 @@
 <body id="eventpage">
   <header>
     <h1> <%= image_tag('whereTo-logo.png') %> </h1>
+
     <nav>
       <ul>
         <li id="allEvents">All Events</li>
         <li id="festivals">Street Fest</li>
-        <li id="movies">Moives at Paks</li>
+        <li id="movies">Moives at Parks</li>
+        <li id="random">Random</li>
       </ul>
     </nav>
-    <div class="ham-nav"> </div>
+    <div class="ham-nav"></div>
+
   </header>
 
 
@@ -23,18 +26,35 @@
           <h3>Calendar coming soon!</h3>
 
         </div>
+
+        <%= form_tag('/session_log_out', method: :delete) do %>
+          <%= submit_tag "Log-Out" %>
+        <% end %>
+
         <h1 class="yourevents">Your Events</h1>
+
         <div class="listEvent">
+          <h3 class="logIn">Log-In</h3>
 
-          <!-- <%= form_tag('/session_log_in', method: :post) do %>
-          <%= label_tag :username %>
-          <%= text_field_tag :username %>
-          <%= label_tag 'password' %>
-          <%= password_field_tag :password %>
+          <div class="log-singup">
+          <%= form_tag('/session_log_in', method: :post) do %>
+          <%= label_tag :username %> <br>
+          <%= text_field_tag :username %> <br>
+          <%= label_tag 'password' %> <br>
+          <%= password_field_tag :password %><br>
           <%= submit_tag "Sign-In" %>
-          <% end %> -->
-
-
+          <% end %>
+          <br>
+           <h4>Sing-Up</h4>
+          <hr>
+          <%= form_for User.new do |f| %>
+            <%= f.label :username %> <br>
+            <%= f.text_field :username %> <br>
+            <%= f.label :password %><br>
+            <%= f.password_field :password %><br>
+            <%= f.submit %>
+          <% end %>
+        </div>
 
         </div>
       </aside>

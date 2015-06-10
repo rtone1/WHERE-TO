@@ -6,15 +6,15 @@ Rails.application.routes.draw do
   resources :events
   resources :users
 
-
   post '/session_log_in' => 'sessions#log_in_behavior'
   delete '/session_log_out' => 'sessions#log_out_behavior'
 
   get '/api/events' => 'events#eventsapi'
   get '/api/events/:id' => 'events#eventapi'
-  get '/api/events-rand/' => 'events#eventsapimix'
+  get '/api/events-rand' => 'events#eventsapimix'
   get '/api/events-movies/' => 'events#eventsapimovie'
   get '/api/events-festivals/' => 'events#eventsapifest'
+  put '/api/update-event' => 'events#updatedapi'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
