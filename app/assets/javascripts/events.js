@@ -28,6 +28,23 @@ app.EventView = Backbone.View.extend({
 
 });//end of EventView
 
+app.WeatherTemplate = $('#weathertemplate').html();
+
+app.WeatherView = Backbone.View.extend({
+
+  tagName: 'div',
+  className: 'weatherInfo',
+  template: _.template(app.WeatherTemplate),
+  intialize: function(){
+      this.listenTo(this.model, "change", this.render);
+  },
+  render: function(data){
+    var html = this.template(data);
+    this.$el.html(html);
+    $(".weatherbug").append(this.$el);
+  }
+
+});// end of WeatherTemplate
 
 // Date varible in month/day/year format
 app.now = moment().format("MMMM D YYYY").split(' ');
@@ -193,5 +210,22 @@ $.when(callback).done(function() {
 
 };
 slideShow(app.getEvents());
+
+// weather display ===========================================================
+
+    $.ajax({
+      method: 'get',
+      url: 'http://api.wunderground.com/api//forecast10day/q/IL/Chicago.json',
+      dataType: 'json',
+      success: function(data){
+        var options = data;
+        var weekcast = (options.forecast.simpleforecast.forecastday);
+        for (var i = 0; i < 8; i++){
+          var weaview = new app.WeatherView();
+          weaview.render(weekcast[i]);
+        }
+      }
+    });
+
 
 });//end of document ready
